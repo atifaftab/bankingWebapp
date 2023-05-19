@@ -6,6 +6,7 @@ import lombok.*;
 @Entity
 @Data
 @Table
+@NoArgsConstructor(force = true)
 public class User {
 
     private static final long serialVersionUUID = -5023242037893805512L;
