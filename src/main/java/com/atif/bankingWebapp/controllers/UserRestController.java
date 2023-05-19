@@ -49,4 +49,10 @@ public class UserRestController {
     public User getUserById(@PathVariable long id){
         return service.getUserById(id);
     }
+
+    @PutMapping("/updateUserById/{id}")
+    public User updateUserById(@PathVariable long id, @RequestBody User user){
+        user.setUserId(id);
+        return service.updatUser(user);
+    }
 }

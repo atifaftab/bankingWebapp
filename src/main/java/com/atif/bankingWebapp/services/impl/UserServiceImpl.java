@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
     public User getUserById(long id){
         return userRepository.findById(id).get();
     }
+
+    @Override
+    public User updatUser(User user) {
+        return userRepository.save(user);
+    }
 }
