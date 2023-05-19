@@ -1,12 +1,9 @@
 package com.atif.bankingWebapp.controllers;
 
 import com.atif.bankingWebapp.models.User;
-import com.atif.bankingWebapp.repositories.UserRepository;
+import com.atif.bankingWebapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,7 +12,7 @@ import java.util.List;
 public class UserRestController {
 
     @Autowired
-    UserRepository userRepository;
+    UserService service;
 
 
     @GetMapping("/simpleString")
@@ -26,7 +23,7 @@ public class UserRestController {
     @GetMapping("/getUser")
     public List<User> getUser(){
 
-        return userRepository.findAll();
+        return service.getUser();
 
     }
 
@@ -37,8 +34,14 @@ public class UserRestController {
 //
 //    }
 
-    @PostMapping(name = "/addUser")
-    public void createUser(User user){
-        userRepository.save(user);
+    @PostMapping("/registration")
+    public void createUser(@RequestBody User user){
+        service.saveUser(user);
+    }
+
+
+    @DeleteMapping("/deleteById/{id}")
+    public void deleteById(@PathVariable long id){
+        service.deleteById(id);
     }
 }
