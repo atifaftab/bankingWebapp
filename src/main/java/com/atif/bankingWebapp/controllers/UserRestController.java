@@ -44,4 +44,9 @@ public class UserRestController {
     public void deleteById(@PathVariable long id){
         service.deleteById(id);
     }
+
+    @GetMapping("/getUserById/{id}")
+    public User getUserById(@PathVariable long id){
+        return service.getUserById(id);
+    }
 }
