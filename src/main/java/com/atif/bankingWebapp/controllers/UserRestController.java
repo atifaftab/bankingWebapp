@@ -1,5 +1,6 @@
 package com.atif.bankingWebapp.controllers;
 
+import com.atif.bankingWebapp.dto.UserDTO;
 import com.atif.bankingWebapp.models.User;
 import com.atif.bankingWebapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,11 @@ public class UserRestController {
         return "Yesssss";
     }
 
-    @GetMapping("/getUser")
-    public List<User> getUser(){
-
-        return service.getUser();
-
-    }
+//    @GetMapping("/getUser")
+//    public List<UserDTO> getUser(){
+//        return service.getUser();
+//
+//    }
 
 //    @GetMapping()
 //    public String thingsget(){
@@ -35,24 +35,24 @@ public class UserRestController {
 //    }
 
     @PostMapping("/registration")
-    public void createUser(@RequestBody User user){
+    public void createUser(@RequestBody UserDTO user){
         service.saveUser(user);
     }
 
 
-    @DeleteMapping("/deleteById/{id}")
-    public void deleteById(@PathVariable long id){
-        service.deleteById(id);
-    }
-
-    @GetMapping("/getUserById/{id}")
-    public User getUserById(@PathVariable long id){
-        return service.getUserById(id);
-    }
-
-    @PutMapping("/updateUserById/{id}")
-    public User updateUserById(@PathVariable long id, @RequestBody User user){
-        user.setUserId(id);
-        return service.updatUser(user);
-    }
+//    @DeleteMapping("/deleteById/{id}")
+//    public void deleteById(@PathVariable long id){
+//        service.deleteById(id);
+//    }
+//
+//    @GetMapping("/getUserById/{id}")
+//    public UserDTO getUserById(@PathVariable long id){
+//        return service.getUserById(id);
+//    }
+//
+//    @PutMapping("/updateUserById/{id}")
+//    public void updateUserById(@PathVariable long id, @RequestBody UserDTO user){
+//        //user.setUserId(id);
+//        service.updatUser(id, user);
+//    }
 }

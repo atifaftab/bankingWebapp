@@ -3,18 +3,20 @@ package com.atif.bankingWebapp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Entity
 @Data
 @Table
 @NoArgsConstructor(force = true)
-public class User {
+public class User implements Serializable {
 
     private static final long serialVersionUUID = -5023242037893805512L;
 
     @Id
     @NonNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @Column(name = "id")
     private long userId;
     @NonNull @Column(name="password")
     private String password;
@@ -35,6 +37,8 @@ public class User {
     @NonNull @Column(name="account_no")
     private String accountNo;
     @NonNull @Column(name="current_balance")
-    private String current_balance;
+    private String currentBalance;
 
+    public User(String s, String active, String dob, String s1, String s2, String s3, String s4, long l, String s5, String s6, String status) {
+    }
 }
